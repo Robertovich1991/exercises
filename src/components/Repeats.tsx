@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {useRef} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
@@ -24,7 +26,7 @@ const Repeats: React.FC = () => {
 
   return (
     <View>
-    <Text style={styles.title}>УКАЖИТЕ КОЛИЧЕСТВО ПОВТОРЕНИЙ</Text>
+      <Text style={styles.title}>УКАЖИТЕ КОЛИЧЕСТВО ПОВТОРЕНИЙ</Text>
       <Carousel
         layout={'default'}
         ref={ref}

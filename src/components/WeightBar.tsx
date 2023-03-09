@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {useRef} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
@@ -21,9 +23,9 @@ const WeightBar: React.FC = () => {
   const _renderItem = ({item, index}) => {
     return (
       <View style={styles.block}>
-        <View style={styles.line}></View>
+        <View style={styles.line} />
         <Text style={styles.count}>{item.count}</Text>
-        <View style={styles.line}></View>
+        <View style={styles.line} />
       </View>
     );
   };

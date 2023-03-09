@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
-import { WHITE } from '../assets/colors';
+import {WHITE} from '../assets/colors';
 
 interface Props {
   onPress?: () => void;

@@ -1,7 +1,7 @@
 import React from 'react';
 import {SafeAreaView} from 'react-native';
 import {BLACK} from './assets/colors';
-import Caroucel from './components/Caroucel';
+import CarouselPics from './components/CarouselPics';
 import Header from './components/Header';
 import MainButton from './components/MainButton';
 import Repeats from './components/Repeats';
@@ -11,7 +11,7 @@ function Main() {
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: BLACK}}>
       <Header />
-      <Caroucel />
+      <CarouselPics />
       <WeightBar />
       <Repeats />
       <MainButton />
