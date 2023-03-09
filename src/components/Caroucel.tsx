@@ -45,8 +45,9 @@ const Caroucel: React.FC = () => {
       data={data}
       renderItem={_renderItem}
       sliderWidth={400}
-      itemWidth={200}
+      itemWidth={180}
       hasParallaxImages={true}
+      inactiveSlideOpacity={0.5}
     />
   );
 };
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   image: {
-    width: 200,
+    width: 180,
     height: 250,
     borderRadius: 15,
   },

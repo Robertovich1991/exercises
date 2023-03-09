@@ -24,7 +24,7 @@ const Repeats: React.FC = () => {
 
   return (
     <View>
-      <Text style={styles.title}>Укажите количество повторений</Text>
+    <Text style={styles.title}>УКАЖИТЕ КОЛИЧЕСТВО ПОВТОРЕНИЙ</Text>
       <Carousel
         layout={'default'}
         ref={ref}
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   title: {
     color: WHITE,
     alignSelf: 'center',
-    fontSize: 20,
+    fontSize: 16,
     paddingBottom: 20,
   },
 

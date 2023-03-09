@@ -19,12 +19,18 @@ const data = [
 const WeightBar: React.FC = () => {
   const ref = useRef(null);
   const _renderItem = ({item, index}) => {
-    return <Text style={styles.count}>{item.count}</Text>;
+    return (
+      <View style={styles.block}>
+        <View style={styles.line}></View>
+        <Text style={styles.count}>{item.count}</Text>
+        <View style={styles.line}></View>
+      </View>
+    );
   };
 
   return (
-    <View >
-      <Text style={styles.title}>Укажите вес с которым вы работали</Text>
+    <View>
+      <Text style={styles.title}>УКАЖИТЕ ВЕС С КОТОРЫМ ВЫ РАБОТАЛИ</Text>
       <Carousel
         layout={'default'}
         ref={ref}
@@ -43,19 +49,31 @@ const styles = StyleSheet.create({
   title: {
     color: WHITE,
     alignSelf: 'center',
-    fontSize: 20,
+    fontSize: 16,
+    paddingHorizontal: 16,
     paddingBottom: 20,
   },
   image: {
-    width: 200,
+    width: 180,
     height: 300,
     borderRadius: 15,
   },
-  count:{
+  count: {
     color: WHITE,
     alignSelf: 'center',
-    fontSize: 40,
-    paddingBottom: 20,
-  }
+    fontSize: 50,
+  },
+  block: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 10,
+    alignItems: 'center',
+  },
+  line: {
+    width: 2,
+    height: 30,
+    backgroundColor: WHITE,
+    opacity: 0.3,
+  },
 });
 export default WeightBar;

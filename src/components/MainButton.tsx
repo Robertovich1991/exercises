@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+import { WHITE } from '../assets/colors';
 
 interface Props {
   onPress?: () => void;
@@ -20,12 +21,12 @@ const styles = StyleSheet.create({
     padding: 1,
   },
   box: {
-    backgroundColor: 'white',
+    backgroundColor: WHITE,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingVertical: 4,
+    paddingVertical: 8,
     borderRadius: 20,
-    marginHorizontal: 16,
+    marginHorizontal: 20,
     marginBottom: 20,
   },
   title: {
