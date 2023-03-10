@@ -4,6 +4,7 @@ import {useRef} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import {WHITE} from '../assets/colors';
+import {ICount} from '../types/image';
 
 const data = [
   {
@@ -20,8 +21,12 @@ const data = [
 
 const Repeats: React.FC = () => {
   const ref = useRef(null);
-  const _renderItem = ({item, index}) => {
-    return <Text style={styles.count}>{item.count}</Text>;
+  const _renderItem = ({item, index}: {item: ICount; index: number}) => {
+    return (
+      <Text key={index} style={styles.count}>
+        {item.count}
+      </Text>
+    );
   };
 
   return (

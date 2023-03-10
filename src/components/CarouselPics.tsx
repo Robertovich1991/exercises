@@ -3,15 +3,15 @@ import {Dimensions, Image, StyleSheet, Text, View} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import {WHITE} from '../assets/colors';
 import {trainings} from '../mock/config.json';
+import {IImage} from '../types/image';
 
 const width = Dimensions.get('screen').width;
-const height = Dimensions.get('screen').height;
 
 const CarouselPics: React.FC = () => {
   const ref = useRef(null);
-  const _renderItem = ({item, index}) => {
+  const _renderItem = ({item}: {item: IImage}) => {
     return (
-      <View key={index}>
+      <View key={item.id}>
         <Text style={styles.title}>{item.title}</Text>
         <Image
           resizeMode="cover"

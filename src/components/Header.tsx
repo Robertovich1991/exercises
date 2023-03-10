@@ -10,11 +10,9 @@ interface Props {
 const Header: React.FC<Props> = ({count}) => {
   return (
     <View>
-      <Text style={styles.title}>Triset</Text>
+      <Text style={styles.title}>Trieste</Text>
       <Text style={styles.count}>{count}/3</Text>
-      <Text style={[styles.title, {paddingTop: 10, paddingBottom: 20}]}>
-        ПОДХОД
-      </Text>
+      <Text style={[styles.title, styles.text]}>ПОДХОД</Text>
     </View>
   );
 };
@@ -32,6 +30,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingTop: 10,
   },
+  text: {paddingTop: 10, paddingBottom: 20},
 });
 
 export default Header;
