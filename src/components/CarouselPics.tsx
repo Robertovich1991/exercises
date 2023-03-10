@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import {Dimensions, Image, StyleSheet, Text, View} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import {WHITE} from '../assets/colors';
@@ -6,12 +6,15 @@ import {trainings} from '../mock/config.json';
 import {IImage} from '../types/image';
 
 const width = Dimensions.get('screen').width;
+interface Props {
+  onSnapToItem?: () => void;
+  snapCarouselRef: any;
+}
 
-const CarouselPics: React.FC = () => {
-  const ref = useRef(null);
-  const _renderItem = ({item}: {item: IImage}) => {
+const CarouselPics: React.FC<Props> = ({onSnapToItem, snapCarouselRef}) => {
+  const _renderItem = ({item, index}: {item: IImage; index: number}) => {
     return (
-      <View key={item.id}>
+      <View key={index}>
         <Text style={styles.title}>{item.title}</Text>
         <Image
           resizeMode="cover"
@@ -27,13 +30,14 @@ const CarouselPics: React.FC = () => {
   return (
     <Carousel
       layout="default"
-      ref={ref}
+      ref={snapCarouselRef}
       data={trainings}
       renderItem={_renderItem}
       sliderWidth={width}
       itemWidth={width - 230}
       hasParallaxImages={true}
       inactiveSlideOpacity={0.5}
+      onSnapToItem={onSnapToItem}
     />
   );
 };

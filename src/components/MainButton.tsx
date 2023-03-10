@@ -5,12 +5,14 @@ import {WHITE} from '../assets/colors';
 interface Props {
   onPress?: () => void;
   count: number;
+  disabled?: boolean;
 }
-
-const FollowAuthor: React.FC<Props> = ({onPress, count}) => {
+const FollowAuthor: React.FC<Props> = ({onPress, count, disabled}) => {
   return (
-    <TouchableOpacity onPress={onPress} style={styles.box}>
-      <Text style={styles.title}>ПОДТВЕРДИТЬ ({count} из 3)</Text>
+    <TouchableOpacity disabled={disabled} onPress={onPress} style={styles.box}>
+      <Text style={disabled ? styles.disable : styles.title}>
+        ПОДТВЕРДИТЬ ({count} из 3)
+      </Text>
     </TouchableOpacity>
   );
 };
@@ -33,6 +35,12 @@ const styles = StyleSheet.create({
     fontSize: 11,
     lineHeight: 24,
     fontWeight: '700',
+  },
+  disable: {
+    fontSize: 11,
+    lineHeight: 24,
+    fontWeight: '700',
+    opacity: 0.5,
   },
 });
 

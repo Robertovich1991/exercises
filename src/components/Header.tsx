@@ -10,7 +10,7 @@ interface Props {
 const Header: React.FC<Props> = ({count}) => {
   return (
     <View>
-      <Text style={styles.title}>Trieste</Text>
+      <Text style={styles.title}>ТРИСЕТ</Text>
       <Text style={styles.count}>{count}/3</Text>
       <Text style={[styles.title, styles.text]}>ПОДХОД</Text>
     </View>
