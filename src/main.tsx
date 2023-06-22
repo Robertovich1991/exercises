@@ -1,42 +1,64 @@
-import React, {useCallback, useRef, useState} from 'react';
-import {SafeAreaView, StyleSheet} from 'react-native';
-import {BLACK} from './assets/colors';
-import CarouselPics from './components/CarouselPics';
-import Header from './components/Header';
-import MainButton from './components/MainButton';
-import Repeats from './components/Repeats';
-import WeightBar from './components/WeightBar';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
+import {SafeAreaView, StyleSheet, Text} from 'react-native';
+import {
+  GoogleSignin,
+  GoogleSigninButton,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
+import socketServices from '../android/app/src/utils/socketService';
 
 function Main() {
-  const snapCarouselRef = useRef(null);
-  const [count, setCount] = useState<number>(1);
-  const [selectedIndex, setSelectedIndex] = useState<number>(0);
-  const [disabled, setDisabled] = useState<boolean>(false);
+  useEffect(() => {
+    GoogleSignin.configure({
+      webClientId:
+        '865356315623-oatlubfuhonqhtk19ij1kvl4hslsd8hf.apps.googleusercontent.com',
+      offlineAccess: true,
+      forceCodeForRefreshToken: true,
+    });
+  });
 
-  const onSnapToNext = useCallback(() => {
-    if (count < 3) {
-      snapCarouselRef.current && snapCarouselRef.current.snapToNext();
-      setCount(count + 1);
-      setSelectedIndex(selectedIndex + 1);
-    } else {
-      setDisabled(true);
+  useEffect(()=>{
+    console.log('hello');
+    
+    socketServices.initializeSocket()
+  },[])
+
+  const signIn = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+
+      console.log(userInfo);
+    } catch (error: any) {
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        console.log('User cancelled the login flow');
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        console.log('Signing in');
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        console.log('Play services not available');
+      } else {
+        console.log('Some other error happened');
+        console.log(error.message);
+        console.log(error.code);
+      }
     }
-  }, [count, selectedIndex]);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header count={count} />
-      <CarouselPics snapCarouselRef={snapCarouselRef} />
-      <WeightBar />
-      <Repeats />
-      <MainButton count={count} disabled={disabled} onPress={onSnapToNext} />
+      <Text>Tinder</Text>
+      <GoogleSigninButton
+        style={{width: 192, height: 48, marginTop: 30}}
+        size={GoogleSigninButton?.Size.Icon}
+        color={GoogleSigninButton.Color.Dark}
+        onPress={signIn}
+      />
     </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: BLACK,
   },
 });
 export default Main;

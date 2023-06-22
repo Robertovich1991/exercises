@@ -1,5 +1,5 @@
 package com.exercises;
-
+import com.ocetnik.timer.BackgroundTimerPackage;
 import android.app.Application;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
