@@ -1,4 +1,5 @@
 import BackgroundTimer from 'react-native-background-timer';
+import PushNotification from 'react-native-push-notification';
 import io from 'socket.io-client';
 
 // import { showLocalPushNotification } from 'helper/PushNotificationServices';
@@ -14,7 +15,7 @@ const currentTimestamp = () => {
 let socket = io(URL, {
   reconnection: true,
   reconnectionDelay: 1000,
-  reconnectionDelayMax: 5000,
+  reconnectionDelayMax: 10000,
   reconnectionAttempts: Infinity,
   autoConnect: true,
 });
@@ -22,8 +23,8 @@ let socket = io(URL, {
 class WSService {
   initializeSocket = async () => {
     try {
-        console.log(socket.on('connect'),'aaaaa');
-        
+      console.log(socket.on('connect'), 'aaaaa');
+
       socket.on('connect', () => {
         console.log('===connect===');
 
@@ -75,10 +76,15 @@ class WSService {
         //     'BackgroundTimer Say',
         //     `${value || ''}\n${currentTimestamp()}`
         // );
-        socket.emit('send', {my: 'ok i get news'});
+        PushNotification.localNotification({
+          title: 'barev',
+          message: 'hellooooooooooo',
+          channelId: 'your-channel-id',
+        });
+        socket.emit('send', { my: 'ok i get news' });
 
         // this.socket.emit('send', {my: 'ok i get news'});
-      }, 10000);
+      }, 10 * 10 * 5000);
     } catch (error) {
       console.log(error);
     }

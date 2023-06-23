@@ -1,4 +1,5 @@
 package com.exercises;
+import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;  // <--- Import Package
 import com.ocetnik.timer.BackgroundTimerPackage;
 import android.app.Application;
 import com.facebook.react.PackageList;
